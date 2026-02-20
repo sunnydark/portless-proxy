@@ -1,0 +1,24 @@
+{
+  "name": "portless-proxy",
+  "version": "1.0.0",
+  "description": "Local dev reverse proxy — access services via subdomains instead of port numbers",
+  "type": "module",
+  "bin": {
+    "portless": "./run.mjs",
+    "portless-proxy": "./proxy.mjs"
+  },
+  "keywords": [
+    "proxy",
+    "reverse-proxy",
+    "localhost",
+    "development",
+    "microservices",
+    "subdomain",
+    "devtools"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "get-port": "^7.1.0",
+    "http-proxy": "^1.18.1"
+  }
+}

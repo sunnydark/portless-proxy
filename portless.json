@@ -1,0 +1,20 @@
+{
+  "proxyPort": 80,
+  "proxyPortRange": [8001, 8099],
+  "services": {
+    "web": {
+      "cwd": "./packages/web",
+      "command": "npm start",
+      "env": {
+        "PORT": "{port}"
+      }
+    },
+    "api": {
+      "cwd": "./packages/api",
+      "command": "npm start",
+      "env": {
+        "PORT": "{port}"
+      }
+    }
+  }
+}
