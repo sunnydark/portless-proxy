@@ -8,7 +8,7 @@ http://web.localhost  ->  your web server on some random port
 http://admin.localhost  ->  your admin server on some random port
 ```
 
-Inspired by [Vercel's portless](https://github.com/vercel/portless) project.
+Inspired by [Vercel's portless](https://github.com/vercel-labs/portless) project.
 
 ## Install
 
