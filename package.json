@@ -4,8 +4,8 @@
   "description": "Local dev reverse proxy — access services via subdomains instead of port numbers",
   "type": "module",
   "bin": {
-    "portless": "./bin/portless",
-    "portless-proxy": "./bin/portless-proxy"
+    "portless": "bin/portless",
+    "portless-proxy": "bin/portless-proxy"
   },
   "keywords": [
     "proxy",
