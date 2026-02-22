@@ -28,7 +28,7 @@ if (requested === "init") {
     process.exit(1);
   }
   const template = {
-    proxyPort: 80,
+    proxyPort: 8080,
     proxyPortRange: [8001, 8099],
     services: {
       web: {
@@ -70,7 +70,7 @@ if (namespace) {
     process.exit(1);
   }
 } else {
-  PROXY_PORT = config.proxyPort || 80;
+  PROXY_PORT = config.proxyPort || 8080;
 }
 
 const PROXY_HOST = `http://127.0.0.1:${PROXY_PORT}`;

@@ -1,6 +1,6 @@
 {
   "name": "portless-proxy",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Local dev reverse proxy — access services via subdomains instead of port numbers",
   "type": "module",
   "bin": {

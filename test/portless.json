@@ -1,0 +1,9 @@
+{
+  "proxyPort": 8080,
+  "services": {
+    "api": {
+      "cwd": ".",
+      "command": "node server.js"
+    }
+  }
+}

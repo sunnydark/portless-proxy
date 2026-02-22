@@ -1,5 +1,5 @@
 {
-  "proxyPort": 80,
+  "proxyPort": 8080,
   "proxyPortRange": [8001, 8099],
   "services": {
     "web": {

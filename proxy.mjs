@@ -27,7 +27,7 @@ if (namespace) {
     JSON.stringify({ port: PROXY_PORT, pid: process.pid })
   );
 } else {
-  PROXY_PORT = config.proxyPort || 80;
+  PROXY_PORT = config.proxyPort || 8080;
 }
 
 const serviceNames = config.services ? Object.keys(config.services) : [];
