@@ -7,8 +7,8 @@ An npm package that runs a local reverse proxy for dev services. Users access se
 ## Architecture
 
 ```
-Browser -> http://api.localhost -> proxy.mjs (:80) -> user's service (:4xxx)
-           http://web.localhost ----^                  user's service (:4xxx)
+Browser -> http://api.localhost:8080 -> proxy.mjs (:8080) -> user's service (:4xxx)
+           http://web.localhost:8080 ----^                    user's service (:4xxx)
 ```
 
 With namespaces (parallel branches):
@@ -29,7 +29,7 @@ Branch B: http://api.localhost:8002 -> proxy.mjs (:8002) -> service (:4xxx)
 
 ```json
 {
-  "proxyPort": 80,
+  "proxyPort": 8080,
   "proxyPortRange": [8001, 8099],
   "services": {
     "<name>": {
@@ -60,7 +60,7 @@ portless init                               # create template portless.json
 
 - **Runtime:** Node.js, ESM modules (`"type": "module"`)
 - **Dependencies:** `get-port`, `http-proxy`
-- **Port range:** 4000–4999 for services, 80 for default proxy, 8001–8099 for namespaced proxies
+- **Port range:** 4000–4999 for services, 8080 for default proxy, 8001–8099 for namespaced proxies
 - **Config location:** `portless.json` in the current working directory
 - **Service discovery:** `PORTLESS_URL_<NAME>` env vars injected into all services
 - **Graceful shutdown:** SIGINT/SIGTERM kills child processes and unregisters from proxy
