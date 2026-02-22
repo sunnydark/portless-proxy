@@ -3,9 +3,9 @@
 Local dev reverse proxy — access your services via `<name>.localhost` subdomains instead of tracking port numbers.
 
 ```
-http://api.localhost  ->  your api server on some random port
-http://web.localhost  ->  your web server on some random port
-http://admin.localhost  ->  your admin server on some random port
+http://api.localhost:8080  ->  your api server on some random port
+http://web.localhost:8080  ->  your web server on some random port
+http://admin.localhost:8080  ->  your admin server on some random port
 ```
 
 Inspired by [Vercel's portless](https://github.com/vercel-labs/portless) project.
@@ -35,7 +35,7 @@ This creates `portless.json`:
 
 ```json
 {
-  "proxyPort": 80,
+  "proxyPort": 8080,
   "proxyPortRange": [8001, 8099],
   "services": {
     "web": {
@@ -54,7 +54,7 @@ This creates `portless.json`:
 
 Edit it to match your project.
 
-**2. Start the proxy** (requires port 80):
+**2. Start the proxy:**
 
 ```bash
 portless-proxy
@@ -70,8 +70,8 @@ portless all          # start all services
 **4. Open your browser:**
 
 ```
-http://api.localhost
-http://web.localhost
+http://api.localhost:8080
+http://web.localhost:8080
 ```
 
 ## Configuration
@@ -80,7 +80,7 @@ http://web.localhost
 
 | Field | Default | Description |
 |-------|---------|-------------|
-| `proxyPort` | `80` | Port for the default (non-namespaced) proxy |
+| `proxyPort` | `8080` | Port for the default (non-namespaced) proxy |
 | `proxyPortRange` | `[8001, 8099]` | Port range for namespaced proxies |
 | `services` | — | Map of service name to service config |
 
@@ -189,8 +189,8 @@ portless --ns bug-123 list
 When launching a service, portless injects environment variables for every service defined in your config:
 
 ```
-PORTLESS_URL_API=http://api.localhost:80
-PORTLESS_URL_WEB=http://web.localhost:80
+PORTLESS_URL_API=http://api.localhost:8080
+PORTLESS_URL_WEB=http://web.localhost:8080
 ```
 
 Pattern: `PORTLESS_URL_<UPPERCASED_NAME>`. These include the correct proxy port, so inter-service calls work in both default and namespaced modes.
@@ -203,7 +203,7 @@ Your services can read these to call each other without hardcoding URLs.
 
 Start the reverse proxy.
 
-- Without `namespace`: binds to `proxyPort` (default 80)
+- Without `namespace`: binds to `proxyPort` (default 8080)
 - With `namespace`: auto-picks a port from `proxyPortRange`, writes `.portless/<namespace>.json`
 
 ### `portless [--ns <namespace>] <service|all>`
@@ -223,8 +223,8 @@ Create a template `portless.json` in the current directory.
 ## How It Works
 
 ```
-Browser  ->  http://api.localhost  ->  proxy (:80)  ->  your service (:4xxx)
-             http://web.localhost  ----^                 your service (:4xxx)
+Browser  ->  http://api.localhost:8080  ->  proxy (:8080)  ->  your service (:4xxx)
+             http://web.localhost:8080  ----^                   your service (:4xxx)
 ```
 
 1. **`portless-proxy`** starts an HTTP reverse proxy that routes requests by subdomain
